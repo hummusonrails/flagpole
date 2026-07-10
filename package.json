@@ -1,0 +1,17 @@
+{
+  "name": "flagpole",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A feature-flag service and its typed SDK, shipped to JFrog Fly.",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.27.0",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck"
+  }
+}
