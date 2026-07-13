@@ -14,7 +14,7 @@
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.2.8",
     "@fontsource/open-sans": "^5.2.7",
-    "flagpole-client": "workspace:*",
+    "@hummusonrails/flagpole-client": "workspace:*",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },

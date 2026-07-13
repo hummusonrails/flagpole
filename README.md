@@ -10,7 +10,7 @@ is a frog. The dashboard leans into it.
 ## What it does
 
 - **service** exposes a small REST API for feature flags, backed by an in-memory seeded store.
-- **flagpole-client** is a typed SDK that wraps the API. The one line an app actually writes is
+- **@hummusonrails/flagpole-client** is a typed SDK that wraps the API. The one line an app actually writes is
   `await flags.isEnabled("new-checkout")`.
 - **dashboard** is a small web page that lists the flags and flips them live through the SDK.
 
@@ -44,7 +44,7 @@ flagpole/
 pnpm install
 
 # build the sdk once, the dashboard imports it
-pnpm --filter flagpole-client build
+pnpm --filter @hummusonrails/flagpole-client build
 
 # terminal 1: the service on :8080 (seeded with a few flags)
 pnpm --filter @flagpole/service dev
@@ -67,7 +67,7 @@ curl http://localhost:8080/flags
 ## Use the SDK
 
 ```ts
-import { FlagpoleClient } from "flagpole-client";
+import { FlagpoleClient } from "@hummusonrails/flagpole-client";
 
 const flags = new FlagpoleClient({ baseUrl: "http://localhost:8080" });
 

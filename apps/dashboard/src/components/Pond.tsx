@@ -1,4 +1,4 @@
-import type { Flag } from "flagpole-client";
+import type { Flag } from "@hummusonrails/flagpole-client";
 
 export function Pond({ flags }: { flags: Flag[] }) {
   return (

@@ -1,4 +1,4 @@
-import type { Flag } from "flagpole-client";
+import type { Flag } from "@hummusonrails/flagpole-client";
 import { timeAgo } from "../lib/time";
 
 type FlagRowProps = {

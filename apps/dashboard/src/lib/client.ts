@@ -1,4 +1,4 @@
-import { FlagpoleClient } from "flagpole-client";
+import { FlagpoleClient } from "@hummusonrails/flagpole-client";
 
 export const baseUrl = import.meta.env.VITE_API_URL ?? "http://localhost:8080";
 

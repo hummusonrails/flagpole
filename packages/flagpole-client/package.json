@@ -1,5 +1,5 @@
 {
-  "name": "flagpole-client",
+  "name": "@hummusonrails/flagpole-client",
   "version": "0.1.0",
   "type": "module",
   "description": "typed client for the flagpole feature-flag service",
@@ -14,6 +14,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup && tsc -p tsconfig.build.json",
     "test": "vitest run",

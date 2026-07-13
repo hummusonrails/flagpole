@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import type { Flag } from "flagpole-client";
+import type { Flag } from "@hummusonrails/flagpole-client";
 import { baseUrl, client } from "./lib/client";
 import { FlagRow } from "./components/FlagRow";
 import { Mark } from "./components/Mark";

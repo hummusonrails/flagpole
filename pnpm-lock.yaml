@@ -19,7 +19,7 @@ importers:
       '@fontsource/open-sans':
         specifier: ^5.2.7
         version: 5.2.7
-      flagpole-client:
+      '@hummusonrails/flagpole-client':
         specifier: workspace:*
         version: link:../../packages/flagpole-client
       react:
