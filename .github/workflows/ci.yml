@@ -26,14 +26,14 @@ jobs:
       - name: install
         run: pnpm install --frozen-lockfile
 
+      - name: build sdk
+        run: pnpm --filter @hummusonrails/flagpole-client build
+
       - name: typecheck
         run: pnpm -r typecheck
 
       - name: test
         run: pnpm -r test
-
-      - name: build sdk
-        run: pnpm --filter @hummusonrails/flagpole-client build
 
       # authenticates via oidc and wires docker and npm to the fly registry
       # must run before any push or publish step
