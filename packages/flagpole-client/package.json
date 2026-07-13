@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "description": "typed client for the flagpole feature-flag service",
+  "license": "MIT",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
