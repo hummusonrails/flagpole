@@ -84,6 +84,41 @@ pnpm -r test
 
 ## CI and artifact flow
 
-On every push, GitHub Actions builds the app, builds the Docker image and pushes it to JFrog Fly
-as a container registry, and publishes the SDK to JFrog Fly as an npm registry. The workflow is
-wired up next, and this section is expanded with the exact steps once it lands.
+Every push to `main` (or a manual dispatch) runs a single workflow,
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml). A green run ends with two artifacts in
+the JFrog Fly registry and a release tracked against this repo. Nothing is published by hand.
+
+The pipeline stages, in order:
+
+1. **Build and verify.** Install with a frozen lockfile, build the SDK, typecheck every package,
+   run the tests. A failure here stops the run before anything touches the registry.
+2. **Authenticate.** `jfrog/fly-action@v1` exchanges the job's GitHub OIDC token for a
+   short-lived Fly access token, then configures Docker and npm on the runner to use the tenant
+   registry. The workflow stores no registry credentials at all; the only permission it needs is
+   `id-token: write`.
+3. **Publish.** The Docker image is built and pushed, then the SDK is published if its version
+   is new.
+
+### What gets published
+
+| Artifact                         | Type         | Destination                                                    |
+|:---------------------------------|:-------------|:---------------------------------------------------------------|
+| `flagpole-service`               | Docker image | `hummusonrails.jfrog.io/docker/flagpole-service:<git sha>` and `:latest` |
+| `@hummusonrails/flagpole-client` | npm package  | the Fly npm registry                                            |
+
+The image is tagged twice on every run: the commit SHA pins the exact build, `latest` tracks the
+newest green run.
+
+### The version guard
+
+Fly rejects republishing an npm version that already exists. Instead of letting that fail the
+build, the publish step asks the registry first (`npm view`) and skips with a log line when the
+version is already there. Bumping the version in `packages/flagpole-client/package.json` is what
+releases a new SDK.
+
+### Releases, not just artifacts
+
+Fly records each successful run as a release tied to the workflow and commit that produced it,
+with the artifacts attached. That link only exists when artifacts arrive through CI: a manual
+`docker push` from a laptop lands in the registry as an untracked artifact with no release and
+no provenance. So the rule for this repo is simple: all publishing goes through the workflow.
