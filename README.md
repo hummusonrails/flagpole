@@ -7,6 +7,12 @@ developer experience with **JFrog Fly**: build an app, containerize it, and publ
 The name is a small pun. A flagpole raises flags, a tadpole grows into a frog, and JFrog's mascot
 is a frog. The dashboard leans into it.
 
+## Demo Video
+
+See Fly work live, from a push in this repo to a tracked release.
+
+https://github.com/user-attachments/assets/04d9a428-2f8c-457a-ba52-d1575bc0a1b5
+
 ## What it does
 
 - **service** exposes a small REST API for feature flags, backed by an in-memory seeded store.
