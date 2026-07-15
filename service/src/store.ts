@@ -16,6 +16,7 @@ const DEFAULT_SEED: ReadonlyArray<readonly [string, boolean]> = [
   ["new-checkout", false],
   ["dark-mode", true],
   ["beta-banner", false],
+  ["fly-demo", false],
 ];
 
 export function createStore(

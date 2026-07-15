@@ -1,6 +1,6 @@
 {
   "name": "@hummusonrails/flagpole-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "typed client for the flagpole feature-flag service",
   "license": "MIT",
